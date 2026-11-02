@@ -1,18 +1,338 @@
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Em manutenção</title>
-		<style type="text/css">
-			body {
-				background-color: #00C9C8;
-				color: #FFF;
-				text-align: center;
-				font-family: verdana, sans-serif;
-			}	
-		</style>
-	</head>
-	<body>
-		<h1>Christian Alexandre</h1>
-		<p>Ops, ainda não há nada por aqui.</p>
-	</body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Christian Alexandre | Tech Lead Mobile</title>
+    <meta name="description" content="Tech Lead Mobile. Especialista em mobile com experiência full stack: produtos iOS e Android usados por milhões de pessoas, Kotlin Multiplatform e desenvolvimento assistido por IA.">
+    <meta name="author" content="Christian Alexandre">
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Christian Alexandre | Tech Lead Mobile">
+    <meta property="og:description" content="Produtos iOS e Android usados por milhões de pessoas. Da nota 1.7 à 4.7 na App Store, de +40M de usuários ao homelab com deploy sem downtime.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c2410c'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3ECA%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --bg: #faf8f4; --surface: #fff; --ink: #1c1917; --muted: #5c5650;
+            --line: #e4dfd6; --accent: #c2410c; --accent-soft: #fbece4;
+            --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210; --surface: #1d1a17; --ink: #f2eee8; --muted: #a79f95;
+                --line: #2f2a25; --accent: #fb923c; --accent-soft: #2c1d12;
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--sans); }
+        a { color: var(--accent); text-underline-offset: 3px; }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem; }
+        .skip { position: absolute; left: -999px; }
+        .skip:focus { left: 1rem; top: 1rem; background: var(--surface); padding: .5rem 1rem; z-index: 2; }
+        h1, h2, h3, p { margin: 0; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; font-size: .9375rem; }
+        nav .me { font: 600 .9375rem var(--mono); color: var(--ink); text-decoration: none; }
+        nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+        nav ul a { color: var(--muted); text-decoration: none; }
+        nav ul a:hover { color: var(--accent); }
+        @media (max-width: 34rem) { nav ul li:not(:last-child) { display: none; } }
+
+        .hero { padding: 3.5rem 0 3rem; }
+        .kicker { font: 500 .875rem var(--mono); color: var(--accent); }
+        h1 { font-size: clamp(2.25rem, 7vw, 3.75rem); line-height: 1.08; letter-spacing: -.025em; margin: .75rem 0 1.25rem; font-weight: 700; }
+        .lead { font-size: clamp(1.125rem, 2.4vw, 1.3125rem); color: var(--muted); max-width: 42rem; }
+        .cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+        .btn { display: inline-block; padding: .65rem 1.15rem; border-radius: .5rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 .9375rem var(--sans); text-decoration: none; cursor: pointer; }
+        .btn:hover { border-color: var(--accent); }
+        .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+        @media (prefers-color-scheme: dark) { .btn.primary { color: #1c1917; } }
+
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: .75rem; overflow: hidden; }
+        .stat { background: var(--surface); padding: 1.25rem; }
+        .stat b { display: block; font: 700 1.75rem/1.2 var(--mono); letter-spacing: -.02em; }
+        .stat span { display: block; margin-top: .35rem; color: var(--muted); font-size: .9375rem; line-height: 1.45; }
+
+        .apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: 1.25rem .75rem; list-style: none; margin: 0; padding: 0; }
+        .apps a { display: block; text-align: center; color: var(--ink); text-decoration: none; }
+        .apps img { display: block; margin: 0 auto .55rem; border-radius: 22%; border: 1px solid var(--line); transition: transform .15s; }
+        .apps a:hover img { transform: translateY(-2px); }
+        .apps b { display: block; font-size: .9375rem; font-weight: 600; line-height: 1.3; }
+        .apps span { display: block; color: var(--muted); font-size: .8125rem; line-height: 1.35; }
+        @media (prefers-reduced-motion: reduce) { .apps img { transition: none; } }
+
+        section { padding: 3.5rem 0 0; scroll-margin-top: 1rem; }
+        h2 { font: 600 .875rem var(--mono); color: var(--accent); margin-bottom: 1.5rem; }
+        h2::before { content: "// "; opacity: .6; }
+        .story p { font-size: 1.1875rem; max-width: 44rem; }
+        .story p + p { margin-top: 1rem; }
+
+        .job { display: grid; grid-template-columns: 9.5rem 1fr; gap: .25rem 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--line); }
+        .job:first-of-type { border-top: 0; padding-top: 0; }
+        @media (max-width: 40rem) { .job { grid-template-columns: 1fr; } }
+        .when { font: 400 .8125rem/1.7 var(--mono); color: var(--muted); }
+        h3 { font-size: 1.125rem; line-height: 1.35; font-weight: 650; }
+        .org { color: var(--muted); font-weight: 400; }
+        .job ul, .card ul { margin: .6rem 0 0; padding-left: 1.1rem; }
+        .job li, .card li { margin-top: .3rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; margin: .85rem 0 0 !important; padding: 0 !important; }
+        .tags li { margin: 0; padding: .1rem .5rem; background: var(--accent-soft); border-radius: .3rem; font: 400 .78125rem/1.7 var(--mono); }
+        details { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+        summary { cursor: pointer; font-weight: 600; }
+        details .job { border-top: 0; padding: 1rem 0 0; }
+
+        .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        @media (max-width: 40rem) { .cards { grid-template-columns: minmax(0, 1fr); } }
+        .card { background: var(--surface); border: 1px solid var(--line); border-radius: .75rem; padding: 1.25rem; display: flex; flex-direction: column; }
+        .card.wide { grid-column: 1 / -1; }
+        .card p { margin-top: .5rem; color: var(--muted); }
+        .card .links { margin-top: auto; padding-top: .9rem; font-size: .9375rem; }
+        .badge { font: 500 .75rem var(--mono); color: var(--accent); }
+
+        .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2rem; }
+        dl { margin: 0; }
+        dt { font-weight: 600; }
+        dd { margin: 0 0 .9rem; color: var(--muted); }
+
+        form { display: grid; gap: .9rem; margin-top: 1.5rem; max-width: 34rem; }
+        label { display: grid; gap: .3rem; font-size: .9375rem; font-weight: 600; }
+        input, textarea { width: 100%; padding: .65rem .75rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--surface); color: var(--ink); font: 400 1rem var(--sans); }
+        .hp { position: absolute; left: -9999px; }
+        #form-status { min-height: 1.5rem; font-size: .9375rem; }
+        footer { margin-top: 4rem; padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
+    </style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="wrap">
+    <nav aria-label="Principal">
+        <a class="me" href="#topo">christian.alexandre</a>
+        <ul>
+            <li><a href="#experiencia">Experiência</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="topo">
+        <p class="kicker">Tech Lead Mobile · Full Stack · São José, SC</p>
+        <h1>Christian Alexandre</h1>
+        <p class="lead">Especialista em Mobile, com produtos iOS e Android usados por milhões de pessoas e experiência full stack, construindo também o backend, o web e a infra quando necessário.</p>
+        <div class="cta">
+            <a class="btn primary" href="#contato">Falar comigo</a>
+            <a class="btn" href="https://www.linkedin.com/in/christian-alexandre" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/christianalexandre" rel="noopener">GitHub</a>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <div class="stats" aria-label="Resultados">
+            <div class="stat"><b>1.7 → 4.7</b><span>nota do Guardian na App Store, depois da refatoração</span></div>
+            <div class="stat"><b>+40M</b><span>usuários no app do Grupo Casas Bahia</span></div>
+            <div class="stat"><b>+80%</b><span>de cobertura de testes</span></div>
+            <div class="stat"><b>IA</b><span>criação de agentes autônomos para o desenvolvimento</span></div>
+        </div>
+
+        <section aria-labelledby="apps-t">
+            <h2 id="apps-t">apps em que trabalhei</h2>
+            <ul class="apps">
+                <li><a href="https://apps.apple.com/br/app/id430647496" rel="noopener"><img src="icons/casas-bahia.webp" width="64" height="64" alt="" loading="lazy"><b>Casas Bahia</b><span>Grupo Casas Bahia</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/id430650221" rel="noopener"><img src="icons/extra.webp" width="64" height="64" alt="" loading="lazy"><b>Extra</b><span>Grupo Casas Bahia</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/id414724783" rel="noopener"><img src="icons/pontofrio.webp" width="64" height="64" alt="" loading="lazy"><b>Pontofrio</b><span>Grupo Casas Bahia</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/intelbras-guardian/id1434094231" rel="noopener"><img src="icons/guardian.webp" width="64" height="64" alt="" loading="lazy"><b>Guardian</b><span>Intelbras</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/intelbras-guardian-parceiro/id6478321039" rel="noopener"><img src="icons/guardian-parceiro.webp" width="64" height="64" alt="" loading="lazy"><b>Guardian Parceiro</b><span>Intelbras</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/intelbras-isic-lite/id1323192678" rel="noopener"><img src="icons/isic-lite.webp" width="64" height="64" alt="" loading="lazy"><b>ISIC Lite</b><span>Intelbras</span></a></li>
+                <li><a href="https://apps.apple.com/br/app/intelbras-mibo-smart/id1478264723" rel="noopener"><img src="icons/mibo-smart.webp" width="64" height="64" alt="" loading="lazy"><b>Mibo Smart</b><span>Intelbras</span></a></li>
+            </ul>
+        </section>
+
+        <section class="story" aria-labelledby="sobre">
+            <h2 id="sobre">sobre</h2>
+            <p>Não comecei em engenharia. Entrei na Intelbras no suporte técnico, construí ferramentas internas para resolver os gargalos que eu vivia todo dia e cheguei em desenvolvimento por aí.</p>
+            <p>Esse instinto de produto é como eu trabalho: me importo com o que vai para produção e com a experiência do usuário, não só com o que compila.</p>
+        </section>
+
+        <section id="experiencia" aria-labelledby="exp">
+            <h2 id="exp">experiência</h2>
+
+            <article class="job">
+                <p class="when">set 2026 – hoje</p>
+                <div>
+                    <h3>Tech Lead Mobile <span class="org">· Intelbras</span></h3>
+                    <ul>
+                        <li>Lidero a reconstrução de um app de casa inteligente em Compose Multiplatform: arquitetura, definição de stack e mentoria do time.</li>
+                        <li>Agente de IA que corrige bugs de ponta a ponta, do card ao merge: correção, testes, PR, pipeline, distribuição no Firebase e review humano antes do merge.</li>
+                        <li>Documentação como fonte única da verdade para os agentes (SDD, guidelines, RFCs), com gates automáticos de qualidade.</li>
+                        <li>Pirâmide de testes do unitário ao E2E no app montado, com mais de 80% de cobertura de linha no código compartilhado.</li>
+                    </ul>
+                    <ul class="tags"><li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>Koin</li><li>Espresso</li><li>XCUITest</li><li>GitLab CI</li><li>Agentes de IA</li></ul>
+                </div>
+            </article>
+
+            <article class="job">
+                <p class="when">nov 2025 – ago 2026</p>
+                <div>
+                    <h3>Especialista iOS <span class="org">· FCamara, no Grupo Casas Bahia</span></h3>
+                    <ul>
+                        <li>Atuação consultiva na jornada de busca e descoberta de produtos de um dos maiores e-commerces da América Latina (+40M de usuários).</li>
+                        <li>Conduzi a migração de MVP-C para MVVM-C com Clean Architecture, dentro da transição de UIKit para SwiftUI já em andamento.</li>
+                        <li>Mais de 80% de cobertura em XCTest e testes de snapshot no código novo.</li>
+                    </ul>
+                    <ul class="tags"><li>Swift</li><li>SwiftUI</li><li>Combine</li><li>XCTest</li><li>Snapshot Testing</li><li>MVVM-C</li></ul>
+                </div>
+            </article>
+
+            <article class="job">
+                <p class="when">fev 2025 – out 2025</p>
+                <div>
+                    <h3>Tech Lead Mobile <span class="org">· Intelbras</span></h3>
+                    <ul>
+                        <li>Responsável final pela qualidade do código, code reviews e fluxo de merges da equipe mobile.</li>
+                        <li>Ciclo de vida completo dos apps e todo o processo de release na App Store e no Google Play.</li>
+                        <li>Evolução das pipelines de CI/CD, com separação de stages e testes E2E automatizados.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="job">
+                <p class="when">jan 2022 – jan 2025</p>
+                <div>
+                    <h3>Desenvolvedor Mobile Nativo <span class="org">· Intelbras</span></h3>
+                    <ul>
+                        <li>Refatorei o <a href="https://apps.apple.com/br/app/intelbras-guardian/id1434094231" rel="noopener">Guardian</a>, app de segurança e monitoramento, e levei a nota na App Store de 1.7 para 4.7.</li>
+                        <li>Desenvolvedor solo do <a href="https://apps.apple.com/br/app/intelbras-guardian-parceiro/id6478321039" rel="noopener">Guardian Parceiro</a> no iOS, da arquitetura à publicação.</li>
+                        <li>Apps nativos de gerenciamento de imagem com base ativa superior a 7 milhões de usuários.</li>
+                        <li>Comunicação com hardware por protocolos proprietários e SDKs em Objective-C e Java, além de APIs REST e WebSockets.</li>
+                    </ul>
+                    <ul class="tags"><li>Swift</li><li>Kotlin</li><li>Objective-C</li><li>Java</li><li>RxSwift</li><li>RxJava</li><li>Fastlane</li></ul>
+                </div>
+            </article>
+
+            <article class="job">
+                <p class="when">set 2020 – dez 2021</p>
+                <div>
+                    <h3>Desenvolvedor Full Stack (ferramentas internas) e Instrutor Técnico <span class="org">· Intelbras</span></h3>
+                    <ul>
+                        <li>Idealizei e desenvolvi aplicações web internas que reduziram o tempo médio de atendimento do suporte.</li>
+                        <li>Dashboards de monitoramento gerencial, geradores de senha para CFTV, testadores de portas e validação de CPF/CNPJ.</li>
+                        <li>Capacitação técnica de novos colaboradores, transformando os gargalos da operação em software.</li>
+                    </ul>
+                    <ul class="tags"><li>Node.js</li><li>Python</li><li>PHP</li><li>JavaScript</li><li>SQL</li></ul>
+                </div>
+            </article>
+
+            <details>
+                <summary>Início da carreira (2017 – 2020)</summary>
+                <article class="job">
+                    <p class="when">out 2018 – ago 2020</p>
+                    <div><h3>Estagiário e Analista de Suporte Técnico <span class="org">· Intelbras</span></h3></div>
+                </article>
+                <article class="job">
+                    <p class="when">jun 2017 – ago 2018</p>
+                    <div><h3>Auxiliar Administrativo <span class="org">· Secretaria de Estado da Administração de SC</span></h3>
+                        <ul><li>Site setorial em WordPress e páginas em HTML, CSS e jQuery para demandas internas.</li></ul>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <section id="projetos" aria-labelledby="proj">
+            <h2 id="proj">projetos pessoais</h2>
+            <div class="cards">
+                <article class="card">
+                    <span class="badge">pré-alfa · em construção</span>
+                    <h3>App Monitor</h3>
+                    <p>Veja cada requisição do seu app, ao vivo, no desktop e sem proxy. Um SDK no build de debug envia o tráfego de apps iOS, Android e KMP para um app em Compose Multiplatform, com histórico pesquisável e um servidor MCP para agentes de IA consultarem as requisições capturadas.</p>
+                    <ul class="tags"><li>Compose Multiplatform</li><li>Kotlin</li><li>Swift</li><li>MCP</li></ul>
+                    <p class="links"><a href="https://github.com/christianalexandre/app-monitor" rel="noopener">Ver no GitHub</a></p>
+                </article>
+                <article class="card">
+                    <span class="badge">biblioteca iOS</span>
+                    <h3>AppNetworkMonitor</h3>
+                    <p>Biblioteca em Swift para interceptar e inspecionar o tráfego de rede durante o desenvolvimento, sem mudar a camada de rede do app. Distribuída pelo Swift Package Manager, só para builds de debug.</p>
+                    <ul class="tags"><li>Swift</li><li>URLSession</li><li>SPM</li></ul>
+                    <p class="links"><a href="https://github.com/christianalexandre/app-network-monitor" rel="noopener">Ver no GitHub</a></p>
+                </article>
+                <article class="card wide">
+                    <span class="badge">infraestrutura · homelab</span>
+                    <h3>Homelab com GitOps</h3>
+                    <p>Um cluster k3s no meu próprio servidor Proxmox, descrito inteiro em código: OpenTofu, Ansible e Argo CD. A versão deste site em caws.software roda nele. Cada push passa por build, scan de vulnerabilidades com Trivy e deploy automático; o código da infra é escrito por um loop de agentes de IA que eu construí, com gates e review.</p>
+                    <ul>
+                        <li><strong>0 erros</strong> em 1.756 requisições durante um deploy e em 1.796 durante um rollback.</li>
+                        <li><strong>Restore do Postgres</strong> para um instante exato, provado apagando dados de propósito.</li>
+                        <li><strong>Sem portas abertas</strong> em casa: o tráfego público entra só por um Cloudflare Tunnel.</li>
+                    </ul>
+                    <ul class="tags"><li>Kubernetes</li><li>Argo CD</li><li>OpenTofu</li><li>Ansible</li><li>CloudNativePG</li><li>Zitadel</li><li>Grafana</li></ul>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="stack-t">
+            <div class="two">
+                <div>
+                    <h2 id="stack-t">stack</h2>
+                    <dl>
+                        <dt>Mobile</dt><dd>Swift, SwiftUI, Kotlin, Jetpack Compose, Kotlin e Compose Multiplatform</dd>
+                        <dt>Web e back-end</dt><dd>TypeScript, React, Next.js, Node.js, Kotlin com Spring Boot, Python, PHP, PostgreSQL</dd>
+                        <dt>Arquitetura</dt><dd>Clean Architecture, MVVM-C, MVI</dd>
+                        <dt>Qualidade e entrega</dt><dd>CI/CD com GitHub Actions e GitLab, Firebase, Fastlane, E2E automatizado</dd>
+                    </dl>
+                </div>
+                <div>
+                    <h2>formação</h2>
+                    <dl>
+                        <dt>Especialização em Desenvolvimento de Aplicativos Móveis</dt><dd>PUCPR, 2025 – 2027</dd>
+                        <dt>Engenharia Elétrica, ênfase em Telecomunicações</dt><dd>UNISUL, 2018 – 2024 (iniciada no IFSC)</dd>
+                        <dt>Idiomas</dt><dd>Português nativo, inglês avançado</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" aria-labelledby="cont">
+            <h2 id="cont">trabalhe comigo</h2>
+            <p class="lead">Precisa de um app nativo ou multiplataforma, de uma revisão de arquitetura ou de ajuda para levar IA ao seu time? Vamos conversar.</p>
+            <form id="contact-form" action="https://formspree.io/f/xbdaygvz" method="POST">
+                <label>Nome <input type="text" name="name" required autocomplete="name"></label>
+                <label>E-mail <input type="email" name="email" required autocomplete="email"></label>
+                <label>Mensagem <textarea name="message" rows="5" required></textarea></label>
+                <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div><button class="btn primary" type="submit">Enviar mensagem</button></div>
+                <p id="form-status" role="status"></p>
+            </form>
+            <p>Ou direto em <a href="mailto:christianalexandre.dev@gmail.com">christianalexandre.dev@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <footer>Christian Alexandre · CAWS Software</footer>
+</div>
+<script>
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = form.querySelector('button');
+        button.disabled = true;
+        formStatus.textContent = 'Enviando…';
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' },
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            form.reset();
+            formStatus.textContent = 'Mensagem enviada. Obrigado!';
+        } catch (error) {
+            formStatus.textContent = `Não consegui enviar (${error.message}). Tente pelo e-mail abaixo.`;
+        } finally {
+            button.disabled = false;
+        }
+    });
+</script>
+</body>
 </html>
